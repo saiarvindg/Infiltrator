@@ -11,7 +11,7 @@ public abstract class Character{
    loc = l; 
   }
   
-  public void type(boolean b){
+  public void setType(boolean b){
    type = b; 
   }
    
