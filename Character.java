@@ -12,8 +12,6 @@ public abstract class Character{
    y = dir_y;
   }
   
-  public void setType(boolean b){
-   type = b; 
-  }
+  
    
 }
