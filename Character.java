@@ -7,9 +7,9 @@ public abstract class Character{
     dir = d;
   }
   
-  public void setLoc(int dir_x, int dir_y){
-   x = dir_x;
-   y = dir_y;
+  public void setLoc(int new_x, int new_y){
+   x = new_x;
+   y = new_y;
   }
   
   
