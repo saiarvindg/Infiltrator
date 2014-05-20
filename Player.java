@@ -9,16 +9,16 @@ public class Player extends Character{
   public void move(KeyEvent e){
     int key = e.getKeyCode();
     
-    if(key == 87){  //W key
+    if(key == KeyEvent.VK_W){  //W key
       y -= 4;
     }
-    if(key == 83){   //S key
+    if(key == KeyEvent.VK_S){   //S key
       y += 4;
     }
-    if(key == 65){   // A key
+    if(key == KeyEvent.VK_A){   // A key
       x -= 4;
     }
-    if(key == 68){  //D key
+    if(key == KeyEvent.VK_D){  //D key
       x += 4;
     }
   }
