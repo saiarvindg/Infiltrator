@@ -1,16 +1,30 @@
 public class Guard extends Character{
-  public Guard{
+  
+  private int startX,startY;
+  private int steps;
+  
+  public Guard(x,y,s){
     super.setLoc(0,0);
+    startX = x;
+    startY = y;
+    steps = s;
+    repaint();
   }
-  public path(int startX, int startY, int steps){
+  
+  public path(int startX, int startY, int dis){
     super.setLoc(startX, startY);
-    for(int t = 0; t < 4; t++){
-      for(int s = 0; s < steps; s++){
-        super.move();
-      }
+    if(steps == dis){
       turn();
+      steps = 0;
     }
-    path(startX, startY, steps);
+    move();
+    steps++;
+    repaint();
+  }
+  
+  public void paintComponent(Graphics g){
+    super.paintComponent(g);
+    g.setColor(Color.RED);
+    g.fillOval(startX - 10, startY - 10, 20, 20);
   }
 }
-//SAI SUCKS AT JAVA -l-Q
