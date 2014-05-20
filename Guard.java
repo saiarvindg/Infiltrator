@@ -1,7 +1,6 @@
 public class Guard extends Character{
   
-  private int startX,startY;
-  private int steps;
+  private int startX,startY,steps;
   
   public Guard(x,y,s){
     super.setLoc(0,0);
