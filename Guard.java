@@ -1,6 +1,6 @@
 public class Guard extends Character{
   
-  private int startX,startY,steps;
+  private int startX,startY,steps, numTurns;
   
   public Guard(x,y,s){
     super.setLoc(0,0);
@@ -10,10 +10,13 @@ public class Guard extends Character{
     repaint();
   }
   
-  public path(int startX, int startY, int dis){
+  public path(int startX, int startY, int d){
     super.setLoc(startX, startY);
+    dis = d;
+    numTurns = 0;
     if(steps == dis){
       turn();
+      numTurns++;
       steps = 0;
     }
     move();
@@ -21,9 +24,12 @@ public class Guard extends Character{
     repaint();
   }
   
+  //make a getX() and getY() accessor method that works
+  //extend the guard class for a vision cone class with the triangle's vertex at the guard's x and y
+  
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     g.setColor(Color.RED);
-    g.fillOval(startX - 10, startY - 10, 20, 20);
+    g.fillRect(startX - 10, startY - 10, 20, 20);
   }
 }
