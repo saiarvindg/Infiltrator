@@ -1,7 +1,7 @@
 Goals: 
 1.	Create character abstract classes with instance variables every character should have.
 2.	Create a map and characters (via extension of character abstract class) and get them to display properly.
-3.	Have the player move properly via W, A, S, D keys for motion and mouse for direction.
+3.	Have the player move properly via W, A, S, D keys for motion (and MAYBE mouse for direction - if done all other goals).
 4.	Add enemy guards to spot player and kill player.
   a.	At first, have limited range of guards and immediately remove player
 5.	Have guards to move appropriately through map.
