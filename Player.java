@@ -6,10 +6,21 @@ public class Player extends Character{
     super.setDir(0);
   }
   
-  public void move(int nx, int ny){
-   
+  public void move(KeyEvent e){
+    int key = e.getKeyCode();
     
+    if(key == 87){  //W key
+      y -= 4;
+    }
+    if(key == 83){   //S key
+      y += 4;
+    }
+    if(key == 65){   // A key
+      x -= 4;
+    }
+    if(key == 68){  //D key
+      x += 4;
+    }
   }
-  
   
 }
