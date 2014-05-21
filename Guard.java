@@ -1,27 +1,40 @@
+import javax.swing.*;
 public class Guard extends Character{
   
-  private int startX,startY,steps, numTurns;
+  private int steps;
   
-  public Guard(x,y,s){
+  public Guard(){
     super.setLoc(0,0);
-    startX = x;
-    startY = y;
-    steps = s;
+    steps = 0;
     repaint();
   }
   
-  public path(int startX, int startY, int d){
-    super.setLoc(startX, startY);
+  public path(int sx, int sy, int d){
+    super.setLoc(sx, sy);
     dis = d;
-    numTurns = 0;
     if(steps == dis){
       turn();
-      numTurns++;
-      steps = 0;
+      steps = 1;
     }
     move();
     steps++;
     repaint();
+  }
+  
+  public void move(){
+    if(dir == 0)
+      super.y -= 2;
+    else if(dir == 1)
+      super.x += 2;
+    else if(dir == 2)
+      super.y += 2;
+    else if(dir == 3)
+      super.x -= 2;
+  }
+  public void turn(){
+    if(dir > 3)
+      dir = 0;
+    dir++;
   }
   
   //make a getX() and getY() accessor method that works
