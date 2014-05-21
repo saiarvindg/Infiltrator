@@ -12,16 +12,8 @@ public abstract class Character{
     y = new_y;
   }
   
-  public void move(){
-    if(dir == 0)
-      y -= 2;
-    else if(dir == 1)
-      x += 2;
-    else if(dir == 2)
-      y += 2;
-    else if(dir == 3)
-      x -= 2;
-  }
+  public abstract void move(){  } //Remove move method so sub-class can redfine it
+  
   public void turn(){
     if(dir > 3)
       dir = 0;
