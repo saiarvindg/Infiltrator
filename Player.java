@@ -1,5 +1,5 @@
 import java.awt.*;
-import javax.awt.event.*;
+import java.awt.event.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
