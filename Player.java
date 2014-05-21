@@ -1,14 +1,15 @@
+import java.awt.*;
+import javax.awt.event.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.*;
 
-public class Player extends Character{
-  int x,y;
-  
+
+public class Player extends Character implements KeyListener{
   
   public Player{
     super.setLoc(0,0);
-    super.setDir(0);
-    KeyListener kl = new KeyStuff();
+    KeyListener kl = new KeyListener();
     addKeyListener(kl);
   }
   
@@ -16,19 +17,19 @@ public class Player extends Character{
     int key = e.getKeyCode();
     
     if(key == KeyEvent.VK_W){  //W key
-      y -= 4;
+      super.y -= 4;
       super.setLoc(x,y);
     }
     if(key == KeyEvent.VK_S){   //S key
-      y += 4;
+      super.y += 4;
       super.setLoc(x,y);
     }
     if(key == KeyEvent.VK_A){   // A key
-      x -= 4;
+      super.x -= 4;
       super.setLoc(x,y);
     }
     if(key == KeyEvent.VK_D){  //D key
-      x += 4;
+      super.x += 4;
       super.setLoc(x,y);
     }
   }
@@ -38,11 +39,7 @@ public class Player extends Character{
     
   }
   
-  private class KeyStuff implements KeyListener{
-    public void keyPressed(KeyEvent e){
-      int btn = 
-    }
-  }
-  
-  
+  public void keyPressed(KeyEvent e){
+    move(e);
+  }  
 }
