@@ -1,17 +1,19 @@
 import javax.swing.*;
 public class Guard extends Character{
   
-  private int steps;
+  private int steps,d;
   
   public Guard(){
     super.setLoc(0,0);
     steps = 0;
+    d = 0;
     repaint();
   }
   
-  public path(int sx, int sy, int d){
+  public path(int sx, int sy, int d,int f){
     super.setLoc(sx, sy);
     dis = d;
+    dir = f/90;
     if(steps == dis){
       turn();
       steps = 1;
@@ -36,9 +38,6 @@ public class Guard extends Character{
       dir = 0;
     dir++;
   }
-  
-  //make a getX() and getY() accessor method that works
-  //extend the guard class for a vision cone class with the triangle's vertex at the guard's x and y
   
   public void paintComponent(Graphics g){
     super.paintComponent(g);
