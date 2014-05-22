@@ -40,6 +40,7 @@ public class Guard extends Character{
   }
   
   public void draw(Graphics g){
+    g.setColor(Color.RED);
     g.fillRect(x - 10, y - 10, 20, 20);
   }
 }
