@@ -1,4 +1,4 @@
 NOTES:
 get vision cones in this bitch
 make a display working
-make a workingmap.
+make a working map.
