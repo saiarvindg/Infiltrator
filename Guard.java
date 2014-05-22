@@ -1,18 +1,18 @@
-import javax.swing.*;
+import java.awt.*;
+
 public class Guard extends Character{
   
-  private int steps,d;
+  private int steps,dir;
   
   public Guard(){
     super.setLoc(0,0);
     steps = 0;
-    d = 0;
     repaint();
   }
   
-  public path(int sx, int sy, int d,int f){
+  public void path(int sx, int sy, int d,int f){
     super.setLoc(sx, sy);
-    dis = d;
+    int dis = d;
     dir = f/90;
     if(steps == dis){
       turn();
@@ -42,6 +42,6 @@ public class Guard extends Character{
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     g.setColor(Color.RED);
-    g.fillRect(startX - 10, startY - 10, 20, 20);
+    g.fillRect(x - 10, y - 10, 20, 20);
   }
 }
