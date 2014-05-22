@@ -9,42 +9,43 @@ public class Player extends Character implements KeyListener{
       
   public Player(){
     super.setLoc(0,0);
-    KeyListener kl = new KeyListener();
-    addKeyListener(kl);
   }
   
   public void move(KeyEvent e){
     int key = e.getKeyCode();
     
-    if(key == KeyEvent.VK_W){  //W key
+    if(key == KeyEvent.VK_W){ //W key
       super.y -= 4;
       super.setLoc(super.x,super.y);
       repaint();
     }
-    if(key == KeyEvent.VK_S){   //S key
+    if(key == KeyEvent.VK_S){ //S key
       super.y += 4;
       super.setLoc(super.x,super.y);
       repaint();
     }
-    if(key == KeyEvent.VK_A){   // A key
+    if(key == KeyEvent.VK_A){ // A key
       super.x -= 4;
       super.setLoc(super.x,super.y);
       repaint();
     }
-    if(key == KeyEvent.VK_D){  //D key
+    if(key == KeyEvent.VK_D){ //D key
       super.x += 4;
       super.setLoc(super.x,super.y);
       repaint();
     }
   }
   
-  public void paintComponent(Graphics g){
-    super.paintComponent(g);
+  public void draw(Graphics g){
     g.fillOval(super.x, super.y, 8, 8);
     g.setColor(Color.BLUE);
   }
   
   public void keyPressed(KeyEvent e){
     move(e);
-  }  
+  }
+  
+  public void keyReleased(KeyEvent e){  }
+  
+  public void keyTyped(KeyEvent e){  }
 }
