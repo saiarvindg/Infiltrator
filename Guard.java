@@ -39,9 +39,7 @@ public class Guard extends Character{
     dir++;
   }
   
-  public void paintComponent(Graphics g){
-    super.paintComponent(g);
-    g.setColor(Color.RED);
+  public void draw(Graphics g){
     g.fillRect(x - 10, y - 10, 20, 20);
   }
 }
