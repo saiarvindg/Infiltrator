@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class Player extends Character implements KeyListener{
       
-  public Player{
+  public Player(){
     super.setLoc(0,0);
     KeyListener kl = new KeyListener();
     addKeyListener(kl);
