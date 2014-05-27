@@ -2,36 +2,41 @@ import java.awt.*;
 
 public class Guard extends Character{
   
-  private int steps,dir;
+  private int steps,dis;
   
-  public Guard(){
+  public Guard(int sx, int sy, int d,int f){
     super.setLoc(0,0);
     steps = 0;
-    repaint();
-  }
-  
-  public void path(int sx, int sy, int d,int f){
-    super.setLoc(sx, sy);
-    int dis = d;
-    dir = f/90;
-    if(steps == dis){
-      turn();
-      steps = 1;
-    }
-    move();
-    steps++;
+    int dir = f;
+    dis = d;
     repaint();
   }
   
   public void move(){
-    if(dir == 0)
+    if(steps == dis){
+      turn();
+      steps = 1;
+    }
+    walk();
+  }
+  
+  public void walk(){
+    if(dir == 0){
       super.y -= 2;
-    else if(dir == 1)
+      steps++;
+    }
+    else if(dir == 1){
       super.x += 2;
-    else if(dir == 2)
+      steps++;
+    }
+    else if(dir == 2){
       super.y += 2;
-    else if(dir == 3)
+      steps++;
+    }
+    else if(dir == 3){
       super.x -= 2;
+      steps++;
+    }
   }
   public void turn(){
     if(dir > 3)
