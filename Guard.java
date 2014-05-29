@@ -41,9 +41,10 @@ public class Guard extends Character{
    
   }
   public void turn(){
-    if(dir > 2)
+    if(dir > 3)
       dir = 0;
-    dir++;
+    else
+      dir++;
   }
   
   public void draw(Graphics g){
