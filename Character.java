@@ -1,4 +1,3 @@
-import javax.swing.*;
 
 //public abstract class Character extends JPanel{
   public abstract class Character{
