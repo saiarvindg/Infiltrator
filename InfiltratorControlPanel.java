@@ -14,13 +14,13 @@ public class InfiltratorControlPanel extends JPanel{
   
   public InfiltratorControlPanel(){
     setLayout(new BorderLayout());
-    setBackground(Color.ORANGE);
+    setBackground(Color.YELLOW);
     
     add(timerDisp, BorderLayout.NORTH);
     add(gameOver, BorderLayout.CENTER);
     guards = new ArrayList<Guard>();
     
-    player = new Player();
+    player = new Player(this);
     
     for(int c =1; c < 6; c++){
       guards.add(new Guard(100*c,100*c,5,0));
@@ -38,7 +38,7 @@ public class InfiltratorControlPanel extends JPanel{
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     player.draw(g);
-    repaint();
+    //repaint();
     for(Guard gd : guards){
       gd.draw(g); 
     }
@@ -46,10 +46,10 @@ public class InfiltratorControlPanel extends JPanel{
   
   public boolean detected(Player p, ArrayList<Guard> gds){
     for(Guard gd : gds){
-    if(p.x == gd.x - 4 || p.y == gd.y - 4 ){
-      System.out.println("HIT DETECTED");
-      return true;
-    }
+      if(p.x == gd.x - 4 || p.y == gd.y - 4 ){
+        System.out.println("HIT DETECTED");
+        return true;
+      }
     }
     
     return false;
@@ -63,10 +63,13 @@ public class InfiltratorControlPanel extends JPanel{
       for(Guard gd : guards){
         gd.move(); 
       }
+      /*
       if(detected(player, guards)){
         timer.stop();
         gameOver.setText("GAME OVER");
       }
+      */
+      repaint();
     }
   }
 }
