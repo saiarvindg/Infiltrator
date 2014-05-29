@@ -1,15 +1,14 @@
 import javax.swing.*;
-import java.awt.*;
+import java.util.ArrayList;
 
 public class Map extends JPanel{
   
-  private ArrayList<walls> map;
+  public
+    ArrayList<walls> m;
   
   public Map(){
-    map = new ArrayList<walls>();
+    m = new ArrayList<walls>();
+    m.add(new walls(200,200,400,100));
+    m.add(new walls(200,200,100,400));
   }
-  map.add(new walls(200,200,400,200));
-  map.add(new walls(200,200,200,400));
-  for(walls w: map)
-    w.draw();
 }
