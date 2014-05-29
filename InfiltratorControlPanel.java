@@ -2,41 +2,71 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
+import java.util.ArrayList;
 
 public class InfiltratorControlPanel extends JPanel{
-  private JLabel timerDisp = new JLabel("Placeholder for Timer");
+  private JLabel timerDisp = new JLabel("Time: 20");
+  private JLabel gameOver = new JLabel();
   private Player player;
-  private Guard guard;
+  private ArrayList<Guard> guards;
   private Timer timer;
+  private int countdown = 20;
   
   public InfiltratorControlPanel(){
-   setLayout(new BorderLayout());
-   setBackground(Color.ORANGE);
-   
-   add(timerDisp, BorderLayout.NORTH);
-   
-   player = new Player();
-   guard = new Guard(100,100,2,0);
-   
-   addKeyListener(player);
-   
-   timer = new javax.swing.Timer(1000, new TimerListener());
-   timer.start();
-   
-   setFocusable(true);
-   //setFocus(true);
+    setLayout(new BorderLayout());
+    setBackground(Color.ORANGE);
+    
+    add(timerDisp, BorderLayout.NORTH);
+    add(gameOver, BorderLayout.CENTER);
+    guards = new ArrayList<Guard>();
+    
+    player = new Player();
+    
+    for(int c =1; c < 6; c++){
+      guards.add(new Guard(100*c,100*c,5,0));
+    }
+    
+    addKeyListener(player);
+    
+    timer = new Timer(1000, new TimerListener());
+    timer.start();
+    
+    setFocusable(true);
+    //setFocus(true);
   }
   
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     player.draw(g);
-    guard.draw(g);
+    repaint();
+    for(Guard gd : guards){
+      gd.draw(g); 
+    }
+  }
+  
+  public boolean detected(Player p, ArrayList<Guard> gds){
+    for(Guard gd : gds){
+    if(p.x == gd.x - 4 || p.y == gd.y - 4 ){
+      System.out.println("HIT DETECTED");
+      return true;
+    }
+    }
+    
+    return false;
   }
   
   private class TimerListener implements ActionListener {
     public void actionPerformed(ActionEvent e){
-      guard.move();
-      repaint();
+      countdown--;
+      timerDisp.setText("Time: " + countdown);
+      //guard.move();
+      for(Guard gd : guards){
+        gd.move(); 
+      }
+      if(detected(player, guards)){
+        timer.stop();
+        gameOver.setText("GAME OVER");
+      }
     }
   }
 }
