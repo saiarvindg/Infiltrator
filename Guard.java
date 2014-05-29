@@ -4,12 +4,13 @@ public class Guard extends Character{
   
   private int steps,dis,dir;
   
+  
   public Guard(int sx, int sy, int d,int f){
     super.setLoc(sx,sy);
     steps = 0;
     dir = f;
     dis = d;
-    repaint();
+  //  repaint();
   }
   
   public void move(){
@@ -37,9 +38,10 @@ public class Guard extends Character{
       super.x -= 4;
       steps++;
     }
+   
   }
   public void turn(){
-    if(dir > 3)
+    if(dir > 2)
       dir = 0;
     dir++;
   }
