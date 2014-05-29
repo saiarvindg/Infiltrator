@@ -1,19 +1,17 @@
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.*;
 
 
 public class Player extends Character implements KeyListener{
-      
+  
   public Player(){
     super.setLoc(0,0);
   }
   
   public void move(KeyEvent e){
     int key = e.getKeyCode();
-    
+    System.out.println(super.x + ", " + super.y);
     if(key == KeyEvent.VK_W){ //W key
       super.y -= 4;
       super.setLoc(super.x,super.y);
@@ -34,18 +32,21 @@ public class Player extends Character implements KeyListener{
       super.setLoc(super.x,super.y);
       repaint();
     }
+    repaint();
   }
   
   public void draw(Graphics g){
-    g.fillOval(super.x, super.y, 8, 8);
+    g.fillOval(super.x, super.y, 15, 15);
     g.setColor(Color.BLUE);
   }
   
   public void keyPressed(KeyEvent e){
     move(e);
+    repaint();
+    System.out.println("pressed");
   }
   
-  public void keyReleased(KeyEvent e){  }
+  public void keyReleased(KeyEvent e){ }
   
-  public void keyTyped(KeyEvent e){  }
+  public void keyTyped(KeyEvent e){ }
 }
