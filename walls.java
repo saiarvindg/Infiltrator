@@ -5,7 +5,7 @@ public class walls extends JPanel{
   
   private int x,y,l,w;
   
-  public wall(sx,sy,length,width){
+  public walls(int sx,int sy,int length,int width){
     x=sx;
     y=sy;
     l=length;
@@ -14,5 +14,5 @@ public class walls extends JPanel{
   public void draw(Graphics g){
     g.setColor(Color.BLACK);
     g.fillRect(x,y,l,w);
-  } 
+  }
 }
