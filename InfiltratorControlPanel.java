@@ -10,12 +10,13 @@ public class InfiltratorControlPanel extends JPanel{
   private Player player;
   private ArrayList<Guard> guards;
   private Timer timer;
+  private Timer detectTimer;
   private int countdown = 20;
   private Map map;
   
   public InfiltratorControlPanel(){
     setLayout(new BorderLayout());
-    setBackground(Color.YELLOW);
+    setBackground(Color.GREEN);
     
     add(timerDisp, BorderLayout.NORTH);
     add(gameOver, BorderLayout.CENTER);
@@ -31,7 +32,9 @@ public class InfiltratorControlPanel extends JPanel{
     addKeyListener(player);
     
     timer = new Timer(1000, new TimerListener());
+    detectTimer = new Timer(1000, new GuardDetect());
     timer.start();
+    detectTimer.start();
     
     map = new Map();
     
@@ -42,23 +45,29 @@ public class InfiltratorControlPanel extends JPanel{
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     player.draw(g);
-
+    
     for(Guard gd : guards){
       gd.draw(g);
     }
     
     for(walls w: map.m){
-     w.draw(g); 
+      w.draw(g); 
     }
+    
     
   }
   
   public boolean detect(Player p, Guard grd){
-    if((p.x >= grd.x - 4 && p.x <= grd.x + 4) || (p.y >= grd.y -4 && p.y <= grd.y + 4)){
-      return true; 
+    for(int i = 0; i<16; i++){
+      for(int s = 0 ; s<16; s++){
+        if((grd.p).contains(p.x+i, p.y+s))
+          return true; 
+      }
     }
     return false;
   }
+  
+  //
   
   public boolean gameOver(ArrayList<Guard> gds, int tm){
     for(Guard gd : gds){
@@ -83,6 +92,7 @@ public class InfiltratorControlPanel extends JPanel{
       
       if(gameOver(guards, countdown)){
         timer.stop();
+        detectTimer.stop();
         removeKeyListener(player);
         gameOver.setVisible(true);
         gameOver.setEnabled(true);
@@ -90,6 +100,18 @@ public class InfiltratorControlPanel extends JPanel{
       }
       
       repaint();
+    }
+  }
+  
+  private class GuardDetect implements ActionListener{
+    public void actionPerformed(ActionEvent e){
+      if(gameOver(guards, countdown)){
+        timer.stop();
+        removeKeyListener(player);
+        gameOver.setVisible(true);
+        gameOver.setEnabled(true);
+        gameOver.setText("GAME OVER. CLICK TO PLAY AGAIN");      
+      }
     }
   }
   
