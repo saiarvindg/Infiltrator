@@ -1,6 +1,4 @@
-
-//public abstract class Character extends JPanel{
-  public abstract class Character{
+ public abstract class Character{
   protected int x,y;
   
   public void setLoc(int new_x, int new_y){
