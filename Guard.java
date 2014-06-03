@@ -3,6 +3,7 @@ import java.awt.*;
 public class Guard extends Character{
   
   private int steps,dis,dir;
+  private Map map;
   
   public Polygon p;
   
