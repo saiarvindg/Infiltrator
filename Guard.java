@@ -3,6 +3,7 @@ import java.awt.*;
 public class Guard extends Character{
   
   private int steps,dis,dir;
+  private Map map;
   
   
   public Guard(int sx, int sy, int d,int f){
@@ -10,15 +11,20 @@ public class Guard extends Character{
     steps = 0;
     dir = f;
     dis = d;
-  //  repaint();
+    map = new Map();
   }
   
   public void move(){
-    if(steps == dis){
+    if(steps >= dis){
       turn();
       steps = 1;
     }
-    walk();
+    for(Walls w: map.m){
+      if(w.checker(x - 10, y - 10, 20, 20)) {
+       walk();
+       break;
+      }
+    }
   }
   
   public void walk(){
@@ -38,7 +44,7 @@ public class Guard extends Character{
       super.x -= 4;
       steps++;
     }
-   
+       
   }
   public void turn(){
     if(dir >= 3)
