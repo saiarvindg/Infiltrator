@@ -1,5 +1,5 @@
 import java.awt.*;
-import javax.swing.*;  
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,28 +9,28 @@ public class Player extends Character implements KeyListener{
   
   public Player( JPanel jp ){
     display = jp;
-    super.setLoc(0,0);
+    super.setLoc(15,15);
   }
   
   public void move(KeyEvent e){
     int key = e.getKeyCode();
     System.out.println(super.x + ", " + super.y);
-    if(key == KeyEvent.VK_W){ //W key
+    if(key == KeyEvent.VK_W){
       super.y -= 4;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
-    if(key == KeyEvent.VK_S){ //S key
+    if(key == KeyEvent.VK_S){
       super.y += 4;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
-    if(key == KeyEvent.VK_A){ // A key
+    if(key == KeyEvent.VK_A){
       super.x -= 4;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
-    if(key == KeyEvent.VK_D){ //D key
+    if(key == KeyEvent.VK_D){
       super.x += 4;
       super.setLoc(super.x,super.y);
       display.repaint();
@@ -38,9 +38,9 @@ public class Player extends Character implements KeyListener{
   }
   
   public void draw(Graphics g){
-    g.fillOval(super.x, super.y, 15, 15);
-    //g.setColor(Color.decode("#2DE0ED"));
     g.setColor(Color.BLUE.brighter().brighter());
+    g.fillOval(super.x, super.y, 15, 15);
+
   }
   
   public void keyPressed(KeyEvent e){
