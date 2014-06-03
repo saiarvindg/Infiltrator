@@ -3,8 +3,8 @@ import java.awt.*;
 public class Guard extends Character{
   
   private int steps,dis,dir;
-  private Map map;
   
+  public Polygon p;
   
   public Guard(int sx, int sy, int d,int f){
     super.setLoc(sx,sy);
@@ -12,6 +12,10 @@ public class Guard extends Character{
     dir = f;
     dis = d;
     map = new Map();
+    int [] xs = {x,x+20,x+20,x};
+    int [] ys = {y,y,y+20, y+20};
+    p = new Polygon(xs,ys,4);
+  //  repaint();
   }
   
   public void move(){
@@ -19,12 +23,12 @@ public class Guard extends Character{
       turn();
       steps = 1;
     }
+    
     for(Walls w: map.m){
       if(w.checker(x - 10, y - 10, 20, 20)) {
        walk();
        break;
       }
-    }
   }
   
   public void walk(){
@@ -44,7 +48,7 @@ public class Guard extends Character{
       super.x -= 4;
       steps++;
     }
-       
+   
   }
   public void turn(){
     if(dir >= 3)
