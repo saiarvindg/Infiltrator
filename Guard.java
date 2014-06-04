@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Guard extends Character{
   
@@ -30,6 +31,7 @@ public class Guard extends Character{
        walk();
        break;
       }
+    }
   }
   
   public void walk(){
