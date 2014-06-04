@@ -1,12 +1,13 @@
 import java.awt.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Guard extends Character{
   
   private int steps,dis,dir;
   private Map map;
+  public int gdx, gdy;
   
-  public Polygon p;
+  private Polygon p;
   
   public Guard(int sx, int sy, int d,int f){
     super.setLoc(sx,sy);
@@ -17,7 +18,9 @@ public class Guard extends Character{
     int [] xs = {x,x+20,x+20,x};
     int [] ys = {y,y,y+20, y+20};
     p = new Polygon(xs,ys,4);
-  //  repaint();
+    // repaint();
+    gdx = 4;
+    gdy = 4;
   }
   
   public void move(){
@@ -26,32 +29,43 @@ public class Guard extends Character{
       steps = 1;
     }
     
+    /* for(Walls w: map.m){
+     if(w.checker(x - 10, y - 10, 20, 20)) {
+     walk();
+     return;
+     }
+     }*/
+    
     for(Walls w: map.m){
-      if(w.checker(x - 10, y - 10, 20, 20)) {
-       walk();
-       break;
+      if(p.intersects(w.x, w.y, w.l, w.h)){
+        //gdx *= -1;
+       // gdy *= -1;
+        break;
       }
+      else
+        walk();
+      break;
     }
   }
   
   public void walk(){
     if(dir == 0){
-      super.y -= 4;
+      super.y -= gdy;
       steps++;
     }
     else if(dir == 1){
-      super.x += 4;
+      super.x += gdx;
       steps++;
     }
     else if(dir == 2){
-      super.y += 4;
+      super.y += gdy;
       steps++;
     }
     else if(dir == 3){
-      super.x -= 4;
+      super.x -= gdx;
       steps++;
     }
-   
+    
   }
   public void turn(){
     if(dir >= 3)
