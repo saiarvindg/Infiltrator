@@ -4,10 +4,10 @@ import java.awt.*;
 public class Guard extends Character{
   
   private int steps,dis,dir;
-  private Map map;
+  public Map map;
   public int gdx, gdy;
   
-  private Polygon p;
+  public Polygon p;
   
   public Guard(int sx, int sy, int d,int f){
     super.setLoc(sx,sy);
