@@ -31,10 +31,10 @@ public class Walls extends JPanel{
   }
   
  /* public boolean checker(double x, double y, double w, double h){
-    if(p.intersects(x, y, w, h))
-      return false;
-    return true;
-  }*/
+if(p.intersects(x, y, w, h))
+return false;
+return true;
+}*/
   
   public void draw(Graphics g){
     g.setColor(Color.ORANGE);
