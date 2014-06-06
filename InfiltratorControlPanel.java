@@ -9,6 +9,7 @@ public class InfiltratorControlPanel extends JPanel{
   private JButton gameOver = new JButton();
   private Player player;
   private ArrayList<Guard> guards;
+  private Target tg;
   private Timer timer;
   private Timer detectTimer;
   private int countdown = 200;
@@ -31,6 +32,8 @@ public class InfiltratorControlPanel extends JPanel{
       int rndy = (int)(400*Math.random()) + 100;
       guards.add(new Guard(rndx+c,rndy+c,5,0));
     }
+    tg = new Target(275,275,50,50);
+    
     
     addKeyListener(player);
     
@@ -40,20 +43,21 @@ public class InfiltratorControlPanel extends JPanel{
     detectTimer.start();
     
     
- 
+    
     setFocusable(true);
   }
   
   public void paintComponent(Graphics g){
     super.paintComponent(g);
     player.draw(g);
+    tg.draw(g);
     
     for(Guard gd : guards){
       gd.draw(g);
     }
     
     for(Walls w: map.m){
-      w.draw(g); 
+      w.draw(g);
     }
     
     
@@ -67,7 +71,7 @@ public class InfiltratorControlPanel extends JPanel{
       }
     }
     if(tm == 0){
-      return true; 
+      return true;
     }
     return false;
   }
@@ -76,7 +80,7 @@ public class InfiltratorControlPanel extends JPanel{
     for(int i = 0; i<16; i++){
       for(int s = 0 ; s<16; s++){
         if((grd.p).intersects(p.x+i, p.y+s, 20, 20))
-          return true; 
+          return true;
       }
     }
     return false;
@@ -91,16 +95,6 @@ public class InfiltratorControlPanel extends JPanel{
         gd.move();
       }
       
-      /*
-      if(gameOver(guards, countdown)){
-       timer.stop();
-       detectTimer.stop();
-       removeKeyListener(player);
-       gameOver.setVisible(true);
-       gameOver.setEnabled(true);
-       gameOver.setText("GAME OVER. CLICK TO PLAY AGAIN");      
-       }
-      */
       
       repaint();
     }
@@ -108,13 +102,18 @@ public class InfiltratorControlPanel extends JPanel{
   
   private class GuardDetect implements ActionListener{
     public void actionPerformed(ActionEvent e){
+      if((player.pp).intersects(tg.x,tg.y,tg.l,tg.h)){
+        
+        tg.gotten = true;
+      }
+      
       if(gameOver(guards, countdown)){
         timer.stop();
         detectTimer.stop();
         removeKeyListener(player);
         gameOver.setVisible(true);
         gameOver.setEnabled(true);
-        gameOver.setText("GAME OVER. CLICK TO PLAY AGAIN");      
+        gameOver.setText("GAME OVER. CLICK TO PLAY AGAIN");
       }
     }
   }
@@ -130,11 +129,10 @@ public class InfiltratorControlPanel extends JPanel{
     countdown = 200;
     gameOver.setVisible(false);
     gameOver.setEnabled(false);
-    //gameOver.addActionListener( new playAgain() );
     player.x = 15;
     player.y = 15;
-    player.pdx = 3;
-    player.pdy = 3;
+    player.dx = 3;
+    player.dy = 3;
     addKeyListener(player);
     
     timer.start();
