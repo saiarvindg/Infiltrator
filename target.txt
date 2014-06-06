@@ -1,0 +1,14 @@
+ tg = new Target(275,275,50,50);
+
+ public class targetGotten(Player p, Target t){
+    if(p.intersects(t)){
+     return true; 
+    }
+    return false;
+  }
+
+private class TargetAchieved implements ActionListener{
+    public ovid actionPerformed(ActionEvent e){
+      
+    }
+  }
