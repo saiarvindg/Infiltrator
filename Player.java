@@ -8,14 +8,14 @@ import java.awt.Polygon;
 public class Player extends Character implements KeyListener{
   
   private JPanel display;
-  private int dx,dy;
+  public int dx,dy;
   private int [] xs;
   private int [] ys;
-  private Polygon pp;
+  public Polygon pp;
   private Map map;
   
   
-  public Player( JPanel jp ){
+  public Player( JPanel jp, Map mp ){
     
     display = jp;
     super.setLoc(15,15);
@@ -36,34 +36,34 @@ public class Player extends Character implements KeyListener{
     int key = e.getKeyCode();
     //System.out.println(super.x + ", " + super.y);
     if(key == KeyEvent.VK_W && check()){
-      System.out.println(check());
+      //System.out.println(check());
       super.y -= dy;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
     else if(key == KeyEvent.VK_S && check()){
-      System.out.println(check());
+      //System.out.println(check());
       super.y += dy;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
     else if(key == KeyEvent.VK_A && check()){
-      System.out.println(check());
+      //System.out.println(check());
       super.x -= dx;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
     else if(key == KeyEvent.VK_D && check()){
-      System.out.println(check());
+     // System.out.println(check());
       super.x += dx;
       super.setLoc(super.x,super.y);
       display.repaint();
     }
   }
   
-  public boolean check(){ 
+  public boolean check(){
     for(Walls w: map.m){
-      System.out.println(map.m.size());
+      //System.out.println(map.m.size());
       if(pp.intersects(w.x, w.y, w.l, w.h)){
         System.out.println("here");
         return false;
